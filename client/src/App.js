@@ -10,6 +10,11 @@ import AlertState from "./context/alert/AlertState";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Alerts from "./components/layout/Alerts";
+import setAuthToken from "./utils/setAuthToken";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 const App = () => {
   return (
     <AuthState>
@@ -19,14 +24,13 @@ const App = () => {
             <Fragment>
               <Navbar />
               <div className='container'>
-                <Alerts/>
-                  <Switch>
-                    <Route exact path='/' component={Home} />
-                    <Route exact path='/about' component={About} />
-                    <Route exact path='/register' component={Register} />
-                    <Route exact path='/login' component={Login} />
-                  </Switch>
-               
+                <Alerts />
+                <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/about' component={About} />
+                  <Route exact path='/register' component={Register} />
+                  <Route exact path='/login' component={Login} />
+                </Switch>
               </div>
             </Fragment>
           </Router>
